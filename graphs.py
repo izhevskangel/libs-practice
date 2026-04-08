@@ -23,3 +23,10 @@ plt.title("Залежність балів від часу підготовки"
 plt.xlabel("Години підготовки")
 plt.ylabel("Бал за іспит")
 plt.show()
+
+
+
+
+# top_5 = df.nlargest(5, "depression_pct")
+# plt.figure(figsize=(8, 4))
+# print

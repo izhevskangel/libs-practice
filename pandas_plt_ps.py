@@ -21,9 +21,9 @@ df = pd.read_csv("datasets/Global_Mental_Health_Crisis_Index_2026.csv")
 
 
 
-top_5 = df.nlargest(5, "depression_pct")
-
-plt.figure(figsize=(8, 4))
+# top_5 = df.nlargest(5, "depression_pct")
+#
+# plt.figure(figsize=(8, 4))
 
 # plt.plot(top_5["country"], top_5["depression_pct"], marker="o", label="depression")
 # plt.plot(top_5["country"], top_5["anxiety_pct"], markee = "s", label="anxiety")
@@ -33,11 +33,27 @@ plt.figure(figsize=(8, 4))
 # plt.legend()
 # plt.show()
 
-plt.plot(top_5["country"], top_5["depression_pct"], marker="o", label="depression")
-plt.plot(top_5["country"], top_5["anxiety_pct"], marker="s", label="anxiety")
+# plt.plot(top_5["country"], top_5["depression_pct"], marker="o", label="depression")
+# plt.plot(top_5["country"], top_5["anxiety_pct"], marker="s", label="anxiety")
+#
+# plt.title("Anxiety vs Depression (%)")
+# plt.xlabel("Countries")
+# plt.ylabel("Percents")
+# plt.legend()
+# plt.show()
 
-plt.title("Anxiety vs Depression (%)")
-plt.xlabel("Countries")
-plt.ylabel("Percents")
-plt.legend()
+
+
+plt.figure(figsize=(8,4))
+plt.title("Mental Health VS Social Media")
+plt.xlabel("Hours spent on social media")
+plt.ylabel("Mental crisis score")
+plt.scatter(df["social_media_hours_daily"], df["youth_mh_crisis_score"],
+            s=100, color="red", alpha=0.5)
+plt.grid(True, linestyle="--")
+plt.show()
+
+m,b = nb.polyfit(df["social_media_hours_daily"], df["youth_mh_crisis_score"],1)
+plt.plot(df["social_media_hours_daily"], m*df["youth_mh_crisis_score"]+b, color="red", label="Mental crisis")
+plt.grid(True, linestyle="--")
 plt.show()
